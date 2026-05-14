@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>昆山奥士昆精密机械设备制造有限公司</title>
+<style>
+:root{
+  --bg:#07090c;
+  --bg2:#0c1117;
+  --panel:#111821;
+  --panel2:#151d27;
+  --line:rgba(175,214,235,.14);
+  --line2:rgba(255,255,255,.08);
+  --text:#eef3f7;
+  --muted:#9daab5;
+  --muted2:#71808d;
+  --accent:#8de7ff;
+  --accent2:#39b9d8;
+  --steel:#cbd5df;
+  --warm:#d9cab4;
+  --shadow:0 24px 80px rgba(0,0,0,.55);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(141,231,255,.11), transparent 32%),
+    radial-gradient(circle at 80% 18%, rgba(255,255,255,.06), transparent 30%),
+    linear-gradient(180deg,#07090c 0%,#0c1016 42%,#07090c 100%);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+::selection{background:rgba(141,231,255,.28)}
+
+/* ====== 背景：工业网格 + 金属拉丝 ====== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-2;
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.018) 0 1px, transparent 1px 7px);
+  background-size:72px 72px,72px 72px,auto;
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.95), rgba(0,0,0,.3) 68%, transparent);
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  pointer-events:none;
+  z-index:-1;
+  background:conic-gradient(from 190deg at 52% 48%, transparent 0deg, rgba(141,231,255,.08) 34deg, transparent 74deg, transparent 360deg);
+  filter:blur(26px);
+  animation:ambient 12s ease-in-out infinite alternate;
+}
+@keyframes ambient{from{transform:translate3d(-2%,0,0) rotate(0deg)}to{transform:translate3d(2%,1%,0) rotate(4deg)}}
+
+/* ====== 顶部导航 ====== */
+.header{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:78px;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 clamp(20px,5vw,72px);
+  background:linear-gradient(180deg, rgba(7,9,12,.82), rgba(7,9,12,.48));
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(18px) saturate(130%);
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  letter-spacing:.16em;
+  font-weight:700;
+  color:#fff;
+}
+.logo-mark{
+  width:38px;height:38px;
+  position:relative;
+  border:1px solid rgba(141,231,255,.45);
+  border-radius:12px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.02)),
+    linear-gradient(135deg,rgba(141,231,255,.2),transparent 58%);
+  box-shadow:0 0 32px rgba(141,231,255,.16), inset 0 0 18px rgba(255,255,255,.08);
+}
+.logo-mark::before,.logo-mark::after{
+  content:"";position:absolute;inset:9px;border:1px solid rgba(255,255,255,.3);border-radius:50%;
+}
+.logo-mark::after{inset:16px;background:var(--accent);border:none;box-shadow:0 0 14px var(--accent)}
+.logo span{font-size:1.05rem;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:8px}
+.nav a{
+  position:relative;
+  padding:11px 15px;
+  color:rgba(238,243,247,.75);
+  font-size:.92rem;
+  transition:.25s ease;
+}
+.nav a::after{
+  content:"";position:absolute;left:15px;right:15px;bottom:6px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  transform:scaleX(0);transition:.25s ease;
+}
+.nav a:hover{color:#fff}.nav a:hover::after{transform:scaleX(1)}
+.mobile-menu{display:none;color:var(--muted);font-size:.9rem;border:1px solid var(--line2);padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.04)}
+
+/* ====== 首屏 ====== */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1.02fr) minmax(420px,.98fr);
+  align-items:center;
+  gap:42px;
+  padding:128px clamp(22px,6vw,86px) 84px;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:78px 0 0;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.06) 0%, transparent 23%, transparent 48%, rgba(141,231,255,.08) 49%, transparent 54%),
+    radial-gradient(circle at 74% 48%, rgba(141,231,255,.17), transparent 36%),
+    radial-gradient(circle at 55% 80%, rgba(255,255,255,.07), transparent 32%);
+  pointer-events:none;
+}
+.hero-copy{position:relative;z-index:2;max-width:760px}
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--accent);
+  letter-spacing:.18em;
+  font-size:.78rem;
+  text-transform:uppercase;
+  border:1px solid rgba(141,231,255,.24);
+  background:rgba(141,231,255,.055);
+  padding:8px 12px;
+  border-radius:999px;
+  box-shadow:inset 0 0 22px rgba(141,231,255,.04);
+}
+.kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent)}
+h1{
+  margin-top:24px;
+  font-size:clamp(3.1rem,7vw,7.2rem);
+  line-height:.94;
+  letter-spacing:-.07em;
+  font-weight:760;
+}
+h1 .thin{
+  display:block;
+  margin-top:12px;
+  font-weight:520;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(238,243,247,.58);
+  text-shadow:none;
+}
+.hero-desc{
+  max-width:630px;
+  margin-top:28px;
+  color:rgba(238,243,247,.72);
+  font-size:clamp(1rem,1.6vw,1.22rem);
+  line-height:1.85;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:50px;
+  padding:0 22px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;
+  background:rgba(255,255,255,.05);
+  cursor:pointer;
+  transition:.28s ease;
+}
+.btn-primary{
+  color:#061017;
+  border-color:rgba(141,231,255,.72);
+  background:linear-gradient(135deg,#e9fbff,var(--accent) 42%,#49c8e5);
+  box-shadow:0 18px 50px rgba(57,185,216,.24);
+  font-weight:700;
+}
+.btn:hover{transform:translateY(-2px);border-color:rgba(141,231,255,.42);box-shadow:0 18px 55px rgba(0,0,0,.28)}
+.btn-primary:hover{box-shadow:0 22px 70px rgba(57,185,216,.34)}
+.hero-meta{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:52px;
+  max-width:680px;
+}
+.meta-card{
+  min-height:112px;
+  padding:18px 16px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+}
+.meta-card strong{display:block;font-size:1.35rem;color:#fff;margin-bottom:8px;letter-spacing:-.02em}
+.meta-card span{font-size:.86rem;color:var(--muted);line-height:1.5}
+
+/* ====== 右侧 CNC 机舱视觉 ====== */
+.machine-wrap{
+  position:relative;
+  z-index:2;
+  min-height:620px;
+  display:grid;
+  place-items:center;
+  perspective:1200px;
+}
+.machine{
+  position:relative;
+  width:min(560px,100%);
+  aspect-ratio:1/1.08;
+  transform:rotateX(58deg) rotateZ(-36deg) translateY(8px);
+  transform-style:preserve-3d;
+  filter:drop-shadow(0 42px 55px rgba(0,0,0,.58));
+}
+.machine-base{
+  position:absolute;
+  inset:21% 4% 7% 7%;
+  border-radius:28px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.03) 34%,rgba(0,0,0,.24)),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 14px),
+    linear-gradient(135deg,#28313a,#0d1219 62%,#080b0f);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -38px 70px rgba(0,0,0,.38), 0 38px 90px rgba(0,0,0,.52);
+  transform:translateZ(-18px);
+}
+.machine-base::after{
+  content:"";position:absolute;inset:11%;border-radius:20px;
+  background:
+    linear-gradient(90deg,transparent 0 45%,rgba(141,231,255,.22) 50%,transparent 55%),
+    linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.018));
+  border:1px solid rgba(141,231,255,.18);
+}
+.rail{position:absolute;left:11%;right:11%;height:20px;border-radius:999px;background:linear-gradient(180deg,#d7e0e8,#6d7a85 42%,#202833 100%);box-shadow:0 14px 22px rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.55)}
+.rail.r1{top:30%;transform:translateZ(34px)}.rail.r2{top:42%;transform:translateZ(32px)}.rail.r3{top:55%;transform:translateZ(30px)}
+.gantry{
+  position:absolute;
+  width:58%;height:32%;left:21%;top:18%;
+  border-radius:24px;
+  background:linear-gradient(135deg,#e7edf2 0%,#83919d 26%,#202934 58%,#0e131a 100%);
+  border:1px solid rgba(255,255,255,.28);
+  transform:translateZ(96px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.58),0 30px 60px rgba(0,0,0,.42);
+}
+.gantry::before{
+  content:"CNC";
+  position:absolute;left:22px;top:18px;
+  font-size:3rem;font-weight:800;letter-spacing:-.08em;color:rgba(7,9,12,.42);
+}
+.gantry::after{
+  content:"";position:absolute;right:22px;top:21px;width:56px;height:9px;border-radius:999px;
+  background:var(--accent);box-shadow:0 0 22px rgba(141,231,255,.88);
+}
+.spindle{
+  position:absolute;left:48%;top:42%;width:62px;height:138px;border-radius:18px 18px 10px 10px;
+  background:linear-gradient(90deg,#111820,#f1f5f8 18%,#717d88 38%,#131922 76%,#05070a);
+  border:1px solid rgba(255,255,255,.22);
+  transform:translateZ(172px) translate(-50%,-50%);
+  box-shadow:0 24px 60px rgba(0,0,0,.48),0 0 38px rgba(141,231,255,.12);
+}
+.spindle::before{content:"";position:absolute;left:50%;bottom:-38px;transform:translateX(-50%);width:24px;height:48px;background:linear-gradient(90deg,#f1f5f8,#77838f,#151b23);clip-path:polygon(22% 0,78% 0,100% 100%,0 100%);filter:drop-shadow(0 14px 18px rgba(0,0,0,.35))}
+.spindle::after{content:"";position:absolute;left:50%;bottom:-78px;transform:translateX(-50%);width:2px;height:90px;background:linear-gradient(var(--accent),transparent);box-shadow:0 0 16px var(--accent);animation:cut 1.7s ease-in-out infinite alternate}
+@keyframes cut{from{opacity:.35;height:72px}to{opacity:1;height:106px}}
+.glow-ring{position:absolute;border:1px solid rgba(141,231,255,.35);border-radius:50%;transform:translateZ(188px);filter:drop-shadow(0 0 16px rgba(141,231,255,.38));animation:ring 5s linear infinite}
+.glow-ring.a{inset:25%}.glow-ring.b{inset:16%;animation-duration:8s;opacity:.45}.glow-ring.c{inset:36%;animation-duration:3.6s;opacity:.8}
+@keyframes ring{to{rotate:360deg}}
+.status-panel{
+  position:absolute;
+  right:0;bottom:8%;
+  width:230px;
+  padding:16px;
+  border-radius:20px;
+  background:rgba(9,13,18,.62);
+  border:1px solid rgba(141,231,255,.2);
+  backdrop-filter:blur(18px);
+  box-shadow:var(--shadow);
+  transform:none;
+}
+.status-panel small{display:block;color:var(--muted2);letter-spacing:.18em;margin-bottom:12px}
+.scan-line{height:7px;border-radius:999px;background:linear-gradient(90deg,var(--accent),rgba(141,231,255,.08));box-shadow:0 0 18px rgba(141,231,255,.38);margin:10px 0 15px;animation:scan 2s ease-in-out infinite alternate}
+@keyframes scan{from{width:34%}to{width:100%}}
+.status-row{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid rgba(255,255,255,.07);font-size:.86rem;color:var(--muted)}
+.status-row b{color:#fff;font-weight:650}
+
+/* ====== 通用区块 ====== */
+.section{position:relative;padding:112px clamp(22px,6vw,86px)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:34px}
+.label{color:var(--accent);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+h2{font-size:clamp(2rem,4.5vw,4.3rem);line-height:1.02;letter-spacing:-.055em;max-width:850px}
+.section-head p{max-width:440px;color:var(--muted);line-height:1.8}
+
+/* ====== 工艺卡片 ====== */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  position:relative;
+  min-height:330px;
+  padding:28px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:28px;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025)),
+    radial-gradient(circle at 20% 0%,rgba(141,231,255,.12),transparent 34%),
+    rgba(17,24,33,.72);
+  box-shadow:0 18px 70px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08);
+  transform-style:preserve-3d;
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+}
+.card::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 0 34%,rgba(255,255,255,.12) 45%,transparent 56%);
+  transform:translateX(-120%);transition:.7s ease;
+}
+.card:hover{border-color:rgba(141,231,255,.34);box-shadow:0 28px 90px rgba(0,0,0,.42),0 0 42px rgba(141,231,255,.08)}
+.card:hover::before{transform:translateX(120%)}
+.card-num{font-size:.85rem;color:var(--muted2);letter-spacing:.18em}
+.icon-machine{width:86px;height:86px;margin:34px 0 28px;position:relative;border-radius:22px;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1)}
+.icon-machine::before{content:"";position:absolute;left:18px;right:18px;top:25px;height:15px;border-radius:999px;background:linear-gradient(90deg,#e7edf2,#687581,#101722)}
+.icon-machine::after{content:"";position:absolute;left:34px;top:18px;width:18px;height:48px;background:linear-gradient(#f6f9fb,#52606b,#0b1016);border-radius:8px;box-shadow:0 0 20px rgba(141,231,255,.22)}
+.card h3{font-size:1.55rem;margin-bottom:14px;letter-spacing:-.02em}
+.card p{color:var(--muted);line-height:1.75;font-size:.98rem}
+.specs{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.specs span{font-size:.78rem;color:rgba(238,243,247,.72);padding:7px 9px;border:1px solid rgba(255,255,255,.09);border-radius:999px;background:rgba(255,255,255,.035)}
+
+/* ====== 能力条 ====== */
+.capability{display:grid;grid-template-columns:.82fr 1.18fr;gap:20px;align-items:stretch}
+.big-panel{
+  min-height:430px;
+  border-radius:34px;
+  border:1px solid rgba(255,255,255,.1);
+  background:
+    radial-gradient(circle at 32% 34%, rgba(141,231,255,.16), transparent 30%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 16px),
+    linear-gradient(145deg,#222b34,#0e131a 62%,#07090c);
+  box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1);
+  position:relative;
+  overflow:hidden;
+}
+.big-panel::before{content:"";position:absolute;inset:12%;border:1px solid rgba(141,231,255,.22);border-radius:50%;box-shadow:0 0 0 34px rgba(141,231,255,.025),0 0 72px rgba(141,231,255,.16)}
+.big-panel::after{content:"±0.01";position:absolute;left:34px;bottom:24px;font-size:clamp(4rem,9vw,8rem);font-weight:780;letter-spacing:-.08em;color:rgba(238,243,247,.08)}
+.cap-list{display:grid;gap:14px}
+.cap-item{
+  padding:24px 24px;
+  border-radius:26px;
+  border:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:18px;
+  align-items:center;
+}
+.cap-item b{font-size:1.1rem;color:#fff}.cap-item p{color:var(--muted);line-height:1.65;font-size:.95rem}
+.bar{height:6px;border-radius:999px;margin-top:12px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),rgba(141,231,255,.1));box-shadow:0 0 18px rgba(141,231,255,.48)}
+
+/* ====== 案例展示：不用外链图片，用金属零件视觉 ====== */
+.cases-wrap{overflow:hidden}
+.cases{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(260px,1fr));
+  gap:18px;
+}
+.case-card{
+  position:relative;
+  min-height:360px;
+  border-radius:30px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  background:linear-gradient(145deg,#1a232d,#0d1218 72%);
+  box-shadow:0 22px 74px rgba(0,0,0,.28);
+  transition:.35s ease;
+}
+.case-card:hover{transform:translateY(-8px);border-color:rgba(141,231,255,.28)}
+.part{
+  position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);
+  width:190px;height:190px;border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%,#06080b 0 22%,transparent 23%),
+    conic-gradient(from 20deg,#eef3f7,#788592,#161d25,#dce4eb,#65717d,#0b1016,#eef3f7);
+  box-shadow:inset 0 0 0 18px rgba(0,0,0,.2), inset 0 0 0 38px rgba(255,255,255,.04),0 30px 50px rgba(0,0,0,.42);
+}
+.part::before{content:"";position:absolute;inset:34px;border-radius:50%;border:1px solid rgba(255,255,255,.34);box-shadow:0 0 32px rgba(141,231,255,.1)}
+.part.p2{border-radius:34px;width:210px;height:150px;background:linear-gradient(135deg,#f0f4f7,#7a8793 26%,#161d25 72%,#05070a)}
+.part.p2::before{inset:20px;border-radius:18px}.part.p3{width:160px;height:230px;border-radius:42px;background:linear-gradient(90deg,#101720,#edf2f6 15%,#7a8793 38%,#121922 75%,#070a0e)}
+.part.p4{width:210px;height:210px;border-radius:42% 58% 46% 54%;background:conic-gradient(#e9eef2,#697682,#0c1117,#dce5ec,#1a222b,#f3f6f8)}
+.case-info{position:absolute;left:22px;right:22px;bottom:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1)}
+.case-info small{color:var(--accent);letter-spacing:.16em}.case-info h3{margin-top:8px;font-size:1.2rem}.case-info p{margin-top:8px;color:var(--muted);font-size:.9rem;line-height:1.6}
+
+/* ====== 流程 ====== */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:step}
+.step{
+  counter-increment:step;
+  min-height:240px;
+  padding:24px;
+  border-radius:26px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+  position:relative;
+  overflow:hidden;
+}
+.step::before{content:"0" counter(step);display:block;color:rgba(141,231,255,.72);font-size:.88rem;letter-spacing:.18em;margin-bottom:48px}
+.step::after{content:"";position:absolute;left:24px;right:24px;top:72px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+.step h3{font-size:1.12rem;margin-bottom:12px}.step p{font-size:.92rem;color:var(--muted);line-height:1.7}
+
+/* ====== 联系 ====== */
+.contact{
+  margin:0 clamp(22px,6vw,86px) 48px;
+  padding:54px;
+  border-radius:38px;
+  border:1px solid rgba(141,231,255,.18);
+  background:
+    linear-gradient(120deg,rgba(141,231,255,.14),transparent 42%),
+    linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.12);
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:26px;
+  align-items:center;
+}
+.contact h2{font-size:clamp(2.4rem,5vw,5rem)}
+.contact p{color:var(--muted);line-height:1.8;margin-top:18px;max-width:620px}
+.contact-box{justify-self:end;width:min(420px,100%);padding:24px;border-radius:26px;background:rgba(7,9,12,.42);border:1px solid rgba(255,255,255,.1)}
+.contact-line{display:flex;justify-content:space-between;gap:18px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);color:var(--muted)}
+.contact-line:last-child{border-bottom:0}.contact-line b{color:#fff;text-align:right}
+.footer{padding:0 clamp(22px,6vw,86px) 38px;color:var(--muted2);font-size:.85rem;display:flex;justify-content:space-between;gap:20px}
+.progress{position:fixed;left:0;top:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);z-index:40;width:0;box-shadow:0 0 18px var(--accent)}
+.cursor-glow{position:fixed;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(141,231,255,.1),transparent 64%);pointer-events:none;z-index:-1;transform:translate(-50%,-50%);opacity:.65}
+
+@media (max-width:980px){
+  .header{height:68px;padding:0 18px}.nav{display:none}.mobile-menu{display:block}.logo span{font-size:.95rem}
+  .hero{grid-template-columns:1fr;padding:112px 20px 54px;gap:10px}.machine-wrap{min-height:390px;order:-1;opacity:.85}.machine{width:min(430px,92vw)}.status-panel{right:12px;bottom:4%;width:190px}
+  h1{font-size:clamp(3rem,14vw,5.3rem)}.hero-meta{grid-template-columns:1fr;gap:10px;margin-top:34px}.meta-card{min-height:auto}
+  .section{padding:78px 20px}.section-head{display:block}.section-head p{margin-top:18px}
+  .services,.capability,.cases,.process,.contact{grid-template-columns:1fr}.card{min-height:280px}.big-panel{min-height:320px}.cap-item{grid-template-columns:1fr}.cases{display:flex;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}.case-card{min-width:82vw;scroll-snap-align:start}.process{gap:12px}.contact{margin:0 20px 34px;padding:30px}.contact-box{justify-self:stretch}.footer{display:block;padding:0 20px 30px;line-height:1.8}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.cursor-glow{display:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<header class="header">
+  <a class="logo" href="#top" aria-label="昆山奥士昆精密机械设备制造有限公司">
+    <i class="logo-mark"></i>
+    <span>奥士昆精密机械</span>
+  </a>
+  <nav class="nav" aria-label="主导航">
+    <a href="#services">加工能力</a>
+    <a href="#capability">精度体系</a>
+    <a href="#cases">产品案例</a>
+    <a href="#process">合作流程</a>
+    <a href="#contact">联系咨询</a>
+  </nav>
+  <a class="mobile-menu" href="#contact">联系咨询</a>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="kicker">Precision Machining · Kunshan</div>
+      <h1>金属被切削，<span class="thin">精度被留下。</span></h1>
+      <p class="hero-desc">昆山奥士昆精密机械设备制造有限公司，专注车床加工、CNC 加工、外圆磨与非标零件定制。用稳定工艺、严谨检验和可交付的精度，服务每一个对零件质量有要求的项目。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">获取加工报价 →</a>
+        <a class="btn" href="#services">查看加工能力</a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-card"><strong>Lathe</strong><span>车削 / 轴类 / 套类 / 螺纹类零件加工</span></div>
+        <div class="meta-card"><strong>CNC</strong><span>复杂结构件、小批量打样与批量加工</span></div>
+        <div class="meta-card"><strong>Grinding</strong><span>外圆磨削、尺寸稳定、表面质量控制</span></div>
+      </div>
+    </div>
+
+    <div class="machine-wrap" aria-hidden="true">
+      <div class="machine">
+        <div class="machine-base"></div>
+        <div class="rail r1"></div>
+        <div class="rail r2"></div>
+        <div class="rail r3"></div>
+        <div class="gantry"></div>
+        <div class="spindle"></div>
+        <div class="glow-ring a"></div>
+        <div class="glow-ring b"></div>
+        <div class="glow-ring c"></div>
+      </div>
+      <div class="status-panel">
+        <small>MACHINING STATUS</small>
+        <div class="scan-line"></div>
+        <div class="status-row"><span>Process</span><b>CNC / Turning</b></div>
+        <div class="status-row"><span>Surface</span><b>Grinding</b></div>
+        <div class="status-row"><span>Inspection</span><b>In Process</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="section-head">
+      <div>
+        <div class="label">Manufacturing Capability</div>
+        <h2>不是堆设备，而是把每道工艺做到稳定。</h2>
+      </div>
+      <p>官网视觉可以酷，但客户真正关心的是：图纸能不能看懂、尺寸能不能守住、交期能不能兑现。</p>
+    </div>
+    <div class="services">
+      <article class="card tilt">
+        <div class="card-num">01 / Turning</div>
+        <div class="icon-machine"></div>
+        <h3>车床加工</h3>
+        <p>适合轴类、套类、盘类、螺纹及回转体零件加工，重视同轴度、端面跳动和尺寸一致性。</p>
+        <div class="specs"><span>轴类零件</span><span>螺纹加工</span><span>小批量</span></div>
+      </article>
+      <article class="card tilt">
+        <div class="card-num">02 / CNC Milling</div>
+        <div class="icon-machine"></div>
+        <h3>CNC 加工</h3>
+        <p>面向复杂结构件、非标件、治具夹具与精密零部件，支持打样、优化与批量交付。</p>
+        <div class="specs"><span>结构件</span><span>铣削</span><span>非标定制</span></div>
+      </article>
+      <article class="card tilt">
+        <div class="card-num">03 / Cylindrical Grinding</div>
+        <div class="icon-machine"></div>
+        <h3>外圆磨</h3>
+        <p>针对外圆尺寸、圆度、表面粗糙度和配合精度进行精加工，提升零件装配稳定性。</p>
+        <div class="specs"><span>外圆精磨</span><span>表面质量</span><span>配合尺寸</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="capability">
+    <div class="section-head">
+      <div>
+        <div class="label">Tolerance & Quality</div>
+        <h2>工业美感的核心，是精度可控。</h2>
+      </div>
+      <p>从材料、装夹、刀路到检测，减少每一个环节的波动，才能让零件稳定地接近图纸要求。</p>
+    </div>
+    <div class="capability">
+      <div class="big-panel"></div>
+      <div class="cap-list">
+        <div class="cap-item">
+          <b>图纸评审</b>
+          <div><p>提前识别关键尺寸、配合面、热处理与表面处理要求，减少返工风险。</p><div class="bar"><i style="width:92%"></i></div></div>
+        </div>
+        <div class="cap-item">
+          <b>过程控制</b>
+          <div><p>加工过程关注装夹、刀具磨损、基准转换与批量尺寸漂移，保证稳定输出。</p><div class="bar"><i style="width:86%"></i></div></div>
+        </div>
+        <div class="cap-item">
+          <b>成品检验</b>
+          <div><p>对关键尺寸、外观、配合关系进行确认，让交付不只停留在“做出来”。</p><div class="bar"><i style="width:89%"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cases-wrap" id="cases">
+    <div class="section-head">
+      <div>
+        <div class="label">Parts Gallery</div>
+        <h2>用金属质感呈现加工案例。</h2>
+      </div>
+      <p>这里没有再放占位图，所有“零件视觉”都是 CSS 绘制，不会出现图片不显示的问题。后续你有真实设备图和产品图，再替换进去会更强。</p>
+    </div>
+    <div class="cases">
+      <article class="case-card tilt"><div class="part"></div><div class="case-info"><small>PRECISION PART</small><h3>CNC 精密零件</h3><p>复杂结构、孔位、平面与轮廓加工。</p></div></article>
+      <article class="case-card tilt"><div class="part p2"></div><div class="case-info"><small>TURNING PART</small><h3>车床加工件</h3><p>轴类、套类与回转体零件加工。</p></div></article>
+      <article class="case-card tilt"><div class="part p3"></div><div class="case-info"><small>GRINDING</small><h3>外圆磨展示</h3><p>表面光洁度与配合尺寸控制。</p></div></article>
+      <article class="case-card tilt"><div class="part p4"></div><div class="case-info"><small>CUSTOMIZED</small><h3>非标零件定制</h3><p>按图加工、来样加工、工艺优化。</p></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="process">
+    <div class="section-head">
+      <div>
+        <div class="label">Cooperation Process</div>
+        <h2>从一张图纸，到一批稳定零件。</h2>
+      </div>
+      <p>清晰流程会让客户觉得你不是“小作坊”，而是有加工管理能力的供应商。</p>
+    </div>
+    <div class="process">
+      <article class="step"><h3>图纸 / 样品沟通</h3><p>确认材料、尺寸、公差、数量、表面处理和交期要求。</p></article>
+      <article class="step"><h3>工艺与报价</h3><p>根据加工难度、装夹方案、检测要求给出合理报价。</p></article>
+      <article class="step"><h3>加工与过程检验</h3><p>加工中控制关键尺寸，必要时进行首件确认与过程抽检。</p></article>
+      <article class="step"><h3>交付与复盘</h3><p>完成成品检验、包装交付，并对批量加工进行持续优化。</p></article>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div>
+      <div class="label">Contact</div>
+      <h2>把图纸发来，剩下的交给加工。</h2>
+      <p>车床、CNC、外圆磨、非标零件定制。欢迎发送图纸、材料、数量与交期要求，我们将根据加工难度给出方案与报价。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:info@aoshikun.com?subject=加工报价咨询">发送图纸咨询 →</a>
+        <a class="btn" href="tel:13800000000">电话联系</a>
+      </div>
+    </div>
+    <div class="contact-box">
+      <div class="contact-line"><span>公司</span><b>昆山奥士昆精密机械设备制造有限公司</b></div>
+      <div class="contact-line"><span>业务</span><b>车床 · CNC · 外圆磨</b></div>
+      <div class="contact-line"><span>方式</span><b>info@aoshikun.com</b></div>
+      <div class="contact-line"><span>地区</span><b>江苏 · 昆山</b></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>© 昆山奥士昆精密机械设备制造有限公司</span>
+  <span>Precision Machining · CNC · Turning · Grinding</span>
+</footer>
+
+<script>
+const progress = document.getElementById('progress');
+const cursorGlow = document.getElementById('cursorGlow');
+
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+  progress.style.width = scrolled + '%';
+});
+
+window.addEventListener('pointermove', (e) => {
+  cursorGlow.style.left = e.clientX + 'px';
+  cursorGlow.style.top = e.clientY + 'px';
+});
+
+document.querySelectorAll('.tilt').forEach(card => {
+  card.addEventListener('pointermove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - .5;
+    const y = (e.clientY - rect.top) / rect.height - .5;
+    card.style.transform = `perspective(900px) rotateX(${-y * 5}deg) rotateY(${x * 6}deg) translateY(-6px)`;
+  });
+  card.addEventListener('pointerleave', () => {
+    card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)';
+  });
+});
+</script>
+</body>
+</html>
